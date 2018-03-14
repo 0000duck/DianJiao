@@ -1,0 +1,13 @@
+<launch>  
+    <arg name="device" default="/dev/video0" />
+    <node name="usb_cam_node" pkg="usb_cam" type="usb_cam_node" output="screen"> 
+        <param name="video_device" value="$(arg device)" />  
+        <param name="image_width" value="1280" />  
+        <param name="image_height" value="1024" />  
+        <param name="framerate" value="30" />  
+        <param name="brightness" value="-64" />  
+        <param name="contrast" value="40" />  
+        <param name="saturation " value="60" />  
+    </node>
+    <node name="image_proc" pkg="image_proc" type="image_proc" ns="usb_cam_node"/>
+</launch> 

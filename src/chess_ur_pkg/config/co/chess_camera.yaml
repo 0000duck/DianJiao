@@ -1,0 +1,16 @@
+# camera
+has_camera: true
+camera_id: "camera"
+# size
+camera_height: 0.1
+camera_width: 0.07
+camera_depth: 0.15
+# position
+camera_p_x: 0.240244183203
+camera_p_y: -0.295002157979
+camera_p_z: 0.730142726797
+# orientation
+camera_o_x: 0
+camera_o_y: 0
+camera_o_z: -0.383
+camera_o_w: 0.924

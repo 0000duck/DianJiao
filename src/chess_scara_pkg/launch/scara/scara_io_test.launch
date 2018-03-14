@@ -1,0 +1,6 @@
+<launch>
+    <node pkg="chess_scara_pkg" type="scara_io_test" name="scara_io_test" output="screen" >
+        <param name="ip" value="192.168.1.110" />
+        <param name="isOpen" value="false" />
+    </node>
+</launch>

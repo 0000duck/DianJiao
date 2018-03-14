@@ -1,0 +1,8 @@
+prefix=/home/carson/chess_ws/devel
+
+Name: chess_scara_pkg
+Description: Description of chess_scara_pkg
+Version: 0.0.0
+Cflags: -I/home/carson/chess_ws/src/chess_scara_pkg/include
+Libs: -L/home/carson/chess_ws/devel/lib 
+Requires: roscpp rospy actionlib actionlib_msgs chess_msgs

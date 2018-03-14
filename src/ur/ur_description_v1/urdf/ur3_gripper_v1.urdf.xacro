@@ -1,0 +1,170 @@
+<?xml version="1.0"?>
+
+<robot name="gripper" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <material name="gray">
+    <color rgba="0.2 0.2 0.2 1"/>
+  </material>
+
+  <material name="white">
+    <color rgba="0.3 0.3 0.3 1"/>
+  </material>
+
+  <material name="green">
+    <color rgba="0.5 1 0 1"/>
+  </material>
+  
+  <xacro:property name="GRIPPER_EE_HEIGHT" value="0.1158" />
+  <xacro:property name="GRIPPER_EE_DEPTH" value="0.0572" />
+  
+  <xacro:property name="EE_RADIUS" value="0.03154" />
+  <!-- gripper_base -->
+  <xacro:property name="BASE_HEIGHT" value="0.006" />
+  <xacro:property name="BASE_WIDTH" value="0.0302" />
+  <xacro:property name="BASE_DEPTH" value="${EE_RADIUS * 2 + 0.04076}" /> 
+  
+  <!-- gripper_servo -->
+  <xacro:property name="SERVO_HEIGHT" value="0.081" />
+  <xacro:property name="SERVO_WIDTH" value="${BASE_WIDTH}" />
+  <xacro:property name="SERVO_DEPTH" value="0.03" />
+  
+  <xacro:property name="SERVO_COLLISION_OFFSET" value="0.02" />
+  
+  <!-- gripper_finger -->
+  <xacro:property name="FINGER_HEIGHT" value="0.006" />
+  <xacro:property name="FINGER_WIDTH" value="${BASE_WIDTH}" />
+  <xacro:property name="FINGER_DEPTH" value="0.013" />
+  
+  <xacro:property name="FINGER_LIMIT" value="0.005" />
+
+  <!-- finger extend -->
+  <xacro:property name="FINGER_EXTEND_HEIGHT" value="0.001" />
+  <xacro:property name="FINGER_EXTEND_WIDTH" value="0.016" />
+  <xacro:property name="FINGER_EXTEND_DEPTH" value="${GRIPPER_EE_HEIGHT - BASE_HEIGHT - SERVO_HEIGHT}" />
+  
+  <xacro:macro name="gripper" params="parent" >
+    
+    <!-- base -->
+    <joint name="gripper_base_joint" type="fixed" >
+      <origin xyz="${BASE_HEIGHT/2} 0 ${BASE_DEPTH/2 -EE_RADIUS}" rpy="0 0 0" />
+      <parent link="${parent}" />
+      <child link="gripper_base_link" />
+    </joint>
+
+    <link name="gripper_base_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="${BASE_HEIGHT} ${BASE_WIDTH} ${BASE_DEPTH}" />
+        </geometry>
+        <material name="white" />
+      </visual>
+      
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="${BASE_HEIGHT} ${BASE_WIDTH} ${BASE_DEPTH}" />
+        </geometry>
+      </collision>
+    </link>
+    
+    <!-- servo -->
+    <joint name="gripper_servo_joint" type="fixed" >
+      <origin xyz="${(SERVO_HEIGHT+BASE_HEIGHT)/2} 0 ${(BASE_DEPTH-SERVO_DEPTH)/2}" rpy="0 0 0" />
+      <parent link="gripper_base_link" />
+      <child link="gripper_servo_link" />
+    </joint>
+
+    <link name="gripper_servo_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="${SERVO_HEIGHT} ${SERVO_WIDTH} ${SERVO_DEPTH}" />
+        </geometry>
+        <material name="white" />
+      </visual>
+
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="${SERVO_HEIGHT} ${SERVO_WIDTH + SERVO_COLLISION_OFFSET} ${SERVO_DEPTH + SERVO_COLLISION_OFFSET}" />
+        </geometry>
+      </collision>
+    </link>
+
+    <!-- finger -->
+    <!-- left -->
+    <finger parent="gripper_servo" name="left_finger" reflect="1">
+      <!--<limit effort="1000.0" lower="0" upper="${FINGER_LIMIT}" velocity="0.5" />-->
+    </finger>
+    <!-- right -->
+    <finger parent="gripper_servo" name="right_finger" reflect="-1" >
+      <!--<limit effort="1000.0" lower="${-FINGER_LIMIT}" upper="0" velocity="0.5" />-->
+    </finger>
+
+    <!-- gripper ee -->
+    <joint name="gripper_ee_joint" type="fixed">
+      <origin xyz="${GRIPPER_EE_HEIGHT} 0.0 ${GRIPPER_EE_DEPTH}" rpy="0 0 0" />
+      <parent link="ee_link" />
+      <child link="gripper_ee_link" />
+    </joint>
+    <link name="gripper_ee_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+           <box size="0.0005 0.0005 0.0005"/>
+        </geometry>
+      </visual>
+    </link>
+
+  </xacro:macro>
+  
+  <xacro:macro name="finger" params="parent name reflect">
+    <!--figner-->
+    <joint name="${name}_joint" type="fixed" > <!-- prismatic -->
+      <origin xyz="${(SERVO_HEIGHT + FINGER_DEPTH)/2} 0 ${(SERVO_DEPTH - FINGER_HEIGHT)/2 * reflect}" rpy="0 ${pi/2} 0" />
+      <parent link="${parent}_link" />
+      <child link="${name}_link" />
+      <!--<xacro:insert_block name="limit" />-->
+    </joint>
+    <link name="${name}_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="${FINGER_HEIGHT} ${FINGER_WIDTH} ${FINGER_DEPTH}" />
+        </geometry>
+        <material name="gray" />
+      </visual>
+      
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="${FINGER_HEIGHT} ${FINGER_WIDTH} ${FINGER_DEPTH}" />
+        </geometry>
+      </collision>
+    </link>
+    <!-- figner extend -->
+    <joint name="${name}_extend_joint" type="fixed" >
+      <origin xyz="${(FINGER_EXTEND_HEIGHT + FINGER_HEIGHT)/2 * reflect * -1} 0 ${(FINGER_EXTEND_DEPTH - FINGER_DEPTH)/2}" rpy="0 0 0" />
+      <parent link="${name}_link" />
+      <child link="${name}_extend_link" />
+    </joint>
+    <link name="${name}_extend_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="${FINGER_EXTEND_HEIGHT} ${FINGER_EXTEND_WIDTH} ${FINGER_EXTEND_DEPTH}" />
+        </geometry>
+        <material name="green" />
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <box size="${FINGER_EXTEND_HEIGHT} ${FINGER_EXTEND_WIDTH} ${FINGER_EXTEND_DEPTH}" />
+        </geometry>
+      </collision>
+    </link>
+
+  </xacro:macro>
+
+</robot>

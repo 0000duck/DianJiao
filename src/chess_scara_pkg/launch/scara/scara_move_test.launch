@@ -1,0 +1,6 @@
+<launch>
+    <node pkg="chess_scara_pkg" type="scara_move_test" name="scara_move_test" output="screen" >
+        <rosparam file="$(find chess_scara_pkg)/config/scara_move.yaml" command="load" />
+        <rosparam file="$(find chess_scara_pkg)/config/scara_move_test.yaml" command="load" />
+    </node>
+</launch>

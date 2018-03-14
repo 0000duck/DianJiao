@@ -1,0 +1,9 @@
+﻿#BNF+IAT 1.0 UTF-8;
+!grammar command;
+!slot <word>;
+
+!start <start>;
+<start>:<word>;
+<word>:小优开始下棋!id(1)|
+该你了!id(11)|
+小优摆棋!id(12);

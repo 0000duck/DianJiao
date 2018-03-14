@@ -1,0 +1,10 @@
+<launch>
+    <arg name="sim" default="true" />
+    <node pkg="chess_ur_pkg" type="ur_z_move" name="ur_z_move" output="screen" >
+        <param name="sim" value="$(arg sim)" />
+        
+        <rosparam file="$(find chess_ur_pkg)/config/chess_move.yaml" command="load" />
+        <rosparam file="$(find chess_ur_pkg)/config/ur_move.yaml" command="load" />
+        
+    </node>
+</launch>

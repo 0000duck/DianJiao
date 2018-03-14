@@ -1,0 +1,6 @@
+# req definition
+
+---
+# resp definition
+float32 x
+float32 y

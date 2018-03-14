@@ -1,0 +1,9 @@
+<launch>
+  <node pkg="chess_scara_pkg" type="chess_scara_client" name="$(anon chess_scara_client)" output="screen" >
+
+    <param name="action_name" value="chess_action" />
+
+    <rosparam file="$(find chess_scara_pkg)/config/scara_move_test.yaml" command="load" />
+    
+  </node>
+</launch>

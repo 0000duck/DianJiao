@@ -1,0 +1,17 @@
+robot_ip: 192.168.1.110
+
+sleep: 1
+up_height: 15
+
+position_z: 10
+place_offset: 6
+
+# wait_x: 157.425
+# wait_y: 384.721
+wait_x: 158.403
+wait_y: 366.127
+wait_r: 123
+wait_z: 10
+
+near_r: 123
+far_r: 123

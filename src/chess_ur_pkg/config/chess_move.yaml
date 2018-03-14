@@ -1,0 +1,13 @@
+# chess
+move_id: 110
+
+type: 0
+
+# position type far = 0; near = 1
+pick_type: 0
+pick_x: 0.256864476931
+pick_y: -0.381332049861
+
+place_type: 1
+place_x: 0.213922575777
+place_y: -0.33985939698

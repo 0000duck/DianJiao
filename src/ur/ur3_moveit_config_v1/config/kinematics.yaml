@@ -1,0 +1,10 @@
+manipulator:
+  kinematics_solver: trac_ik_kinematics_plugin/TRAC_IKKinematicsPlugin
+  kinematics_solver_search_resolution: 0.005
+  kinematics_solver_timeout: 0.005
+  kinematics_solver_attempts: 3
+  solve_type: Distance 
+#   % Speed: returns very quickly the first solution found
+#   % Distance: runs for the full timeout_in_secs, then returns the solution that minimizes SSE from the seed
+#   % Manip1: runs for full timeout, returns solution that maximizes sqrt(det(J*J^T))
+#   % Manip2: runs for full timeout, returns solution that minimizes cond(J) = |J|*|J^-1|

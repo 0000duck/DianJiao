@@ -1,0 +1,55 @@
+# move_group
+group_name: "manipulator"
+planning_time: 10.0
+tolerance: 0.0001
+scale: 0.01
+slow_scale: 0.01
+
+up_height: 0.01
+
+# sleep
+sleep: 0.5
+
+# eef_step
+eef_step: 0.01
+
+# z
+position_z: 0.030
+
+# wait
+wait_p_x: 0.0600368141071
+wait_p_y: -0.461724470293
+wait_p_z: 0.04
+
+# wait_o_x: 0.276173313001
+# wait_o_y: 0.648822012397
+# wait_o_z: -0.260405682421
+# wait_o_w: 0.659505252426
+
+wait_o_x: -0.251979405781
+wait_o_y: 0.658020218454
+wait_o_z: 0.283308220893
+wait_o_w: 0.650578375865
+
+# far orientation
+# far_o_x: 0.276173313001
+# far_o_y: 0.648822012397
+# far_o_z: -0.260405682421
+# far_o_w: 0.659505252426
+
+far_o_x: -0.251979405781
+far_o_y: 0.658020218454
+far_o_z: 0.283308220893
+far_o_w: 0.650578375865
+
+# near orientation
+# near_o_x: -0.649963988238
+# near_o_y: 0.25912095543
+# near_o_z: 0.666883030059
+# near_o_w: 0.256261914202
+
+near_o_x: -0.251979405781
+near_o_y: 0.658020218454
+near_o_z: 0.283308220893
+near_o_w: 0.650578375865
+

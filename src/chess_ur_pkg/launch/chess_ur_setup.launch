@@ -1,0 +1,12 @@
+<launch>
+  <arg name="sim" default="false" />
+  <arg name="robot_ip" unless="$(arg sim)" default="192.168.1.103" />
+
+  <include file="$(find chess_ur_pkg)/launch/ur/ur3_start.launch" >
+    <arg name="sim" value="$(arg sim)" />
+    <arg name="robot_ip" unless="$(arg sim)" value="$(arg robot_ip)"  />
+  </include>
+  
+
+  
+</launch>

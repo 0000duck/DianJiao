@@ -1,0 +1,12 @@
+# chess
+
+# operation type go = 0 ; capture = 1 ; wait = 2
+type: 2
+# position type far = 0; near = 1
+pick_type: 0
+pick_x: 194.711
+pick_y: 30.254
+
+place_type: 1
+place_x: 345.909
+place_y: 34.727

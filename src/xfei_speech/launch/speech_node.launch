@@ -1,0 +1,5 @@
+<launch>
+    <node pkg="xfei_speech" type="speech_node" name="speech_node" >
+        
+    </node>
+</launch>

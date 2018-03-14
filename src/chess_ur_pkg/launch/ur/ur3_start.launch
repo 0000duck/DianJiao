@@ -1,0 +1,21 @@
+<launch>
+  <arg name="sim" default="false" />
+  <arg name="robot_ip" unless="$(arg sim)" />
+  <!-- sim -->
+  <group if="$(arg sim)" >
+    <include file="$(find ur3_moveit_config_v1)/launch/demo.launch" />
+  </group>
+  <!-- real -->
+  <group unless="$(arg sim)" >
+    <include file="$(find ur3_moveit_config_v1)/launch/ur3_real_start.launch" >
+      <arg name="robot_ip" value="$(arg robot_ip)" />
+    </include>
+  </group>
+  
+  <!-- chess_board -->
+  <include file="$(find chess_ur_pkg)/launch/board/chess_board.launch" />
+  
+  <!-- ur_get_point -->
+  <include file="$(find chess_ur_pkg)/launch/ur/ur_get_point.launch" />
+
+</launch>

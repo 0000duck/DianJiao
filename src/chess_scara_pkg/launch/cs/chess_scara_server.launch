@@ -1,0 +1,14 @@
+<launch>
+    <arg name="sim" default="false" />
+    <node pkg="chess_scara_pkg" type="chess_scara_server" name="chess_scara_server" output="screen" >
+        <param name="sim" value="$(arg sim)" />
+        
+        <param name="action_name" value="chess_action" />
+        
+        <rosparam file="$(find chess_scara_pkg)/config/scara_move.yaml" command="load" />
+        
+        <param name="point_srv_name" value="ur_get_point"  />
+        <param name="mode_srv_name" value="scara_switch_mode" />
+
+    </node>
+</launch>

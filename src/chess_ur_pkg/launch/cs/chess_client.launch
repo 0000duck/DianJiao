@@ -1,0 +1,9 @@
+<launch>
+  <node pkg="chess_ur_pkg" type="chess_client" name="$(anon chess_client)" output="screen" >
+    
+    <param name="srv_name" value="chess_server" />
+    
+    <rosparam file="$(find chess_ur_pkg)/config/chess_move.yaml" command="load" />
+
+  </node>
+</launch>

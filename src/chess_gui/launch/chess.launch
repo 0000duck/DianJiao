@@ -1,0 +1,16 @@
+<launch>
+    <arg name="robot_id" />
+    <arg name="robot_name" />
+    <arg name="path" default="/home/carson/chess_ws/image/" />
+    <node name="chess_node" pkg="chess_gui" type="chess_node.py">
+        <param name="path" value="$(arg path)" />
+        <param name="robot_id" value="$(arg robot_id)" />
+        <param name="robot_name" value="$(arg robot_name)" />
+        
+        <param name="ai_ip" value="192.168.1.120" />
+        <param name="ai_port" value="6666" />
+
+        <param name="point_srv_name" value="ur_get_point" />
+        <param name="chess_action_name" value="chess_action" />
+    </node>
+</launch>

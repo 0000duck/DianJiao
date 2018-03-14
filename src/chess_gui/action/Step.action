@@ -1,0 +1,11 @@
+# goal definition
+float32 max_x
+float32 max_y
+Operation[] ops
+---
+# result definition
+bool res
+string msg
+---
+# feedback definition
+string feedback

@@ -1,0 +1,8 @@
+# req definition
+float32 max_x
+float32 max_y
+Operation[] ops
+---
+# resp definition
+bool res
+string msg

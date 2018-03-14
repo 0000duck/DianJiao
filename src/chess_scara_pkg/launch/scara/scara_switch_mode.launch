@@ -1,0 +1,6 @@
+<launch>
+    <arg name="manual" default="true" />
+    <node pkg="chess_scara_pkg" type="scara_switch_mode" name="scara_switch_mode" output="screen" >
+        <param name="manual" value="$(arg manual)" />
+    </node>
+</launch>

@@ -1,0 +1,43 @@
+
+rostopic pub -1 speech_command std_msgs/String -- "talk 额达"
+
+
+cd ~/{$catkin_ws}	# 进入ros catkin工作空间
+cd src
+
+catkin_create_pkg xfei_speech roscpp rospy std_msgs
+
+cd xfei_speech
+
+# 将xfei_speech.zip解压缩到这里
+
+cd ~/{$catkin_ws}
+catkin_make
+
+roscd xfei_speech
+rosrun xfei_speech speech_node	# 必须在xfei_speech目录下运行
+
+接口定义：
+
+  通过speech_command接收命令字符串，格式如下：
+	talk xxxx - 将xxxx说出来
+	talker man|woman - 设置发音者，男|女
+	listen on|off - 开始|结束 语音识别
+  注意：python向c++发布消息时，第1条可能收不到，可以先随便发送1条""消息
+
+  通过speech_recognize来发布语音识别的结果，xml格式，示例如下：
+	<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+	<nlp>
+	  <version>1.1</version>
+	  <rawtext>跳舞</rawtext>
+	  <confidence>78</confidence>
+	  <engine>local</engine>
+	  <result>
+	    <focus>word</focus>
+	    <confidence>69</confidence>		# 识别结果的可信度，如果过低（比如<25），则可以不做处理
+	    <object>
+	      <word id="12">跳舞</word>		# 识别出来的关键字及其ID
+	    </object>
+	  </result>
+	</nlp>
+  注意：关键字及其ID定义在xfei_speech/asr_word.bnf文件中

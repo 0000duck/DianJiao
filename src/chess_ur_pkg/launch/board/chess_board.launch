@@ -1,0 +1,11 @@
+<launch>
+  <node pkg="chess_ur_pkg" type="chess_board" name="chess_board" output="screen" >
+    <!-- frame id -->
+    <param name="frame_id" value="world" />
+    
+    <rosparam file="$(find chess_ur_pkg)/config/co/chess_desk.yaml" command="load" />
+    <rosparam file="$(find chess_ur_pkg)/config/co/chess_board.yaml" command="load" />
+    <rosparam file="$(find chess_ur_pkg)/config/co/chess_camera.yaml" command="load" />
+    
+  </node>
+</launch>

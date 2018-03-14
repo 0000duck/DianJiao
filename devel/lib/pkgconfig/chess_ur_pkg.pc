@@ -1,0 +1,8 @@
+prefix=/home/carson/chess_ws/devel
+
+Name: chess_ur_pkg
+Description: Description of chess_ur_pkg
+Version: 0.0.0
+Cflags: -I/home/carson/chess_ws/src/chess_ur_pkg/include
+Libs: -L/home/carson/chess_ws/devel/lib 
+Requires: moveit_core moveit_ros_planning_interface roscpp rospy actionlib actionlib_msgs ur_msgs chess_msgs

@@ -1,0 +1,12 @@
+<launch>
+    <arg name="sim" default="false" />
+    <node pkg="chess_ur_pkg" type="chess_action_server" name="chess_action_server" output="screen" >
+        <param name="sim" value="$(arg sim)" />
+
+        <param name="action_name" value="chess_action" />
+        
+        <rosparam file="$(find chess_ur_pkg)/config/ur_move.yaml" command="load" />
+        <rosparam file="$(find chess_ur_pkg)/config/co/chess_board.yaml" command="load" />
+        
+    </node>
+</launch>

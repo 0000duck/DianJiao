@@ -1,0 +1,9 @@
+<launch>
+    <node pkg="chess_scara_pkg" type="scara_zmotion_test" name="scara_zmotion_test" output="screen" >
+        <param name="ip" value="192.168.1.110" />
+        <param name="x" value="175.448870428" />
+        <param name="y" value="114.628261302" />
+        <param name="r" value="123" />
+        <param name="z" value="20" />
+    </node>
+</launch>

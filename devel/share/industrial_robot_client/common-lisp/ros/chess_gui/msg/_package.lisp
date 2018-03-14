@@ -1,0 +1,21 @@
+(cl:defpackage chess_gui-msg
+  (:use )
+  (:export
+   "<OPERATION>"
+   "OPERATION"
+   "<STEPACTION>"
+   "STEPACTION"
+   "<STEPACTIONFEEDBACK>"
+   "STEPACTIONFEEDBACK"
+   "<STEPACTIONGOAL>"
+   "STEPACTIONGOAL"
+   "<STEPACTIONRESULT>"
+   "STEPACTIONRESULT"
+   "<STEPFEEDBACK>"
+   "STEPFEEDBACK"
+   "<STEPGOAL>"
+   "STEPGOAL"
+   "<STEPRESULT>"
+   "STEPRESULT"
+  ))
+

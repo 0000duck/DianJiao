@@ -1,0 +1,8 @@
+prefix=/home/carson/chess_ws/install
+
+Name: chess_msgs
+Description: Description of chess_msgs
+Version: 0.0.1
+Cflags: -I/home/carson/chess_ws/install/include
+Libs: -L/home/carson/chess_ws/install/lib 
+Requires: std_msgs actionlib_msgs message_runtime

@@ -1,0 +1,10 @@
+<launch>
+  <node pkg="chess_ur_pkg" type="chess_result" name="$(anon chess_result)" output="screen" >
+    <param name="duration" value="0.5" />
+
+    <param name="chess_move_topic" value="chess/move" />
+    <param name="chess_result_topic" value="chess/result" />
+    
+    <rosparam file="$(find chess_ur_pkg)/config/chess_move.yaml" command="load" />
+  </node>
+</launch>

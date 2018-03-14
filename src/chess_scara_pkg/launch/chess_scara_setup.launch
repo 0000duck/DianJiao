@@ -1,0 +1,14 @@
+<launch>
+
+  <!-- action server -->
+  <include file="$(find chess_scara_pkg)/launch/cs/chess_scara_server.launch" >
+    
+  </include>
+  
+  <!-- chess gui -->
+  <include file="$(find chess_gui)/launch/chess.launch">
+    <arg name="robot_id" value="scara" />
+    <arg name="robot_name" value="scara" />
+  </include>
+  
+</launch>

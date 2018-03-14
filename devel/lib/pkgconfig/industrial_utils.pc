@@ -1,0 +1,8 @@
+prefix=/home/carson/chess_ws/devel
+
+Name: industrial_utils
+Description: Description of industrial_utils
+Version: 0.5.1
+Cflags: -I/home/carson/chess_ws/src/pkgs/industrial_core/industrial_utils/include
+Libs: -L/home/carson/chess_ws/devel/lib -lindustrial_utils
+Requires: roscpp urdf
